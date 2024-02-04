@@ -10,7 +10,7 @@ public:
     void print(); // test function
 
     /* start up SDL and create window */
-    bool initalize();
+    // bool initalize();
 
     /* loads the media */
     bool loadMedia();
@@ -18,7 +18,7 @@ public:
     /* Frees media and shuts down SDL */
     void close();
 
-private:
+// private:
     /* the window to render to */
     SDL_Window* mainmenu_window = NULL;
 
