@@ -10,7 +10,7 @@ public:
     void print(std::string &test); // test function
 
     /* start up SDL and create window */
-    // bool initalize();
+    bool initalize();
 
     /* loads the media */
     bool loadMedia();
