@@ -7,7 +7,7 @@ class MainMenu
 {
 public:
     MainMenu();
-    void print(); // test function
+    void print(std::string &test); // test function
 
     /* start up SDL and create window */
     // bool initalize();

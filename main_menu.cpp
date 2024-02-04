@@ -3,8 +3,8 @@
 
 MainMenu::MainMenu(){}
 
-void MainMenu::print(){
-    std::cout << "hello world!\n";
+void MainMenu::print(std::string &test){
+    test = "Hello world!\n";
 }
 
 /*bool MainMenu::initalize(){
