@@ -9,8 +9,9 @@ public:
     MainMenu();
     void print(std::string &test); // test function
 
-    /* start up SDL and create window */
+    /* create main_menu surface*/
     bool initalize();
+    
 
     /* loads the media */
     bool loadMedia();
@@ -20,7 +21,7 @@ public:
 
 // private:
     /* the window to render to */
-    SDL_Window* mainmenu_window = NULL;
+    // SDL_Window* mainmenu_window = NULL;
 
     /* The surface containd by the window */
     SDL_Surface* mainmenu_surface = NULL;
