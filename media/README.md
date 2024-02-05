@@ -1,3 +1,4 @@
-# This is where the media for the main menu is stored.
+# These are the folders for the media
 
-I believe it only uses *.bmp* files
+## main_menu
+* MainMenuImage.bmp
