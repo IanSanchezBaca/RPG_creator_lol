@@ -21,6 +21,15 @@ void Game::initialize(string title, int xpos, int ypos, int width, int height){
             cout << "Error: " << SDL_GetError() << endl;
             exit(-1);
         }
+        
+        renderer = SDL_CreateRenderer(window, -1, 0);
+        if(renderer){
+            cout << "Renderer created successfully!\n";
+        }
+        else{
+            cout << "ERROR: " << SDL_GetError() << endl;
+            exit(-1);
+        }
     }
     else{
         cout << "ERROR: " << SDL_GetError() << endl;
@@ -28,7 +37,20 @@ void Game::initialize(string title, int xpos, int ypos, int width, int height){
     }
 }
 
-void Game::EventHandler(){}
+void Game::EventHandler(){
+    SDL_Event event;
+    SDL_PollEvent(&event);
+
+    switch (event.type)
+    {
+    case SDL_QUIT:
+        isRunning = false;
+        break;
+    
+    default:
+        break;
+    }
+}
 
 void Game::update(){}
 
