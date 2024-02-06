@@ -9,6 +9,7 @@ void MainMenu::print(std::string &test){
 
 bool MainMenu::initalize(){
     bool succ = false;
-
+    // already initialized sdl so dont need to initialize it again.
+    
     return succ;
 }

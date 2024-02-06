@@ -23,9 +23,10 @@ bool main_init(SDL_Window *mw)
         mw = SDL_CreateWindow("RPG Creator",
                               SDL_WINDOWPOS_UNDEFINED,
                               SDL_WINDOWPOS_UNDEFINED,
-                              640, // this is the width of the screen
+                              640, // this is the width of the screen 
                               480, // this is the height of the screen
                               SDL_WINDOW_SHOWN);
+        // the width and height are temporary until i figure out how tf all of this shid works
 
         if (mw == NULL)
         {
@@ -45,6 +46,9 @@ int main(int argc, char *args[])
 
     SDL_Event e;
     bool quit = false;
+
+    MainMenu main_menu;
+
     while (quit == false)
     {
         while (SDL_PollEvent(&e) != 0)
@@ -52,7 +56,8 @@ int main(int argc, char *args[])
             if (e.type == SDL_QUIT)
             {
                 quit = true;
-            }            
+            }
+
         }
     }
 
