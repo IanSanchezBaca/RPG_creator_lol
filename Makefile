@@ -10,7 +10,7 @@ CFLAGS = -Wall -Wextra -std=c++11
 LDFLAGS = -lSDL2
 
 # Source files
-SRCS = main.cpp main_menu.cpp
+SRCS = main.cpp game.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
