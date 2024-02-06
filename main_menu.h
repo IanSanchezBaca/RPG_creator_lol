@@ -7,10 +7,11 @@ class MainMenu
 {
 public:
     MainMenu();
+    
     void print(std::string &test); // test function
 
-    /* create main_menu surface*/
-    bool initalize();
+    /* create main_menu surface */
+    bool initalize(SDL_Window *);
     
 
     /* loads the media */
@@ -19,7 +20,7 @@ public:
     /* Frees media and shuts down SDL */
     void close();
 
-// private:
+private:
     /* the window to render to */
     // SDL_Window* mainmenu_window = NULL;
 
