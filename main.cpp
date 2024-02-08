@@ -8,18 +8,20 @@
 
 using namespace std;
 
-
+Game *game = NULL;  
 
 int main(int argc, char *args[])
 {
-    Game key;
-    key.initialize("RPG_Creator",
-                    0,
-                    0,
-                    600,
-                    400);
+    game = new Game();
     
+    while (game->running())
+    {
+        game->EventHandler();
+        game->update();
+        game->render();
+    }
     
+    game->close();
 
     return 0;
 }

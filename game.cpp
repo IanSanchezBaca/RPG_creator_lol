@@ -24,6 +24,7 @@ void Game::initialize(string title, int xpos, int ypos, int width, int height){
         
         renderer = SDL_CreateRenderer(window, -1, 0);
         if(renderer){
+            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
             cout << "Renderer created successfully!\n";
         }
         else{
@@ -54,9 +55,20 @@ void Game::EventHandler(){
 
 void Game::update(){}
 
-void Game::render(){}
+void Game::render(){
+    SDL_RenderClear(renderer);
+    
+    // we would add stuff to render here
 
-void Game::close(){}
+    SDL_RenderPresent(renderer);
+}
+
+void Game::close(){
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+    SDL_Quit();
+    cout << "Game cleaned!\n";
+}
 
 bool Game::running(){
     return isRunning;
