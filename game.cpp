@@ -9,11 +9,13 @@ Game::Game(){}
 // destructor
 Game::~Game(){}
 
-void Game::initialize(string title, int xpos, int ypos, int width, int height){
+void Game::initialize(char* title, int xpos, int ypos, int width, int height){
     if(SDL_Init(SDL_INIT_EVERYTHING) == 0){
-        string t = title;
+        // string t = title;
         cout << "SDL Initialized correctly.\n";
-        window = SDL_CreateWindow("RPG_Creator", xpos, ypos, width, height, SDL_WINDOW_SHOWN);
+        
+        window = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_SHOWN);
+        
         if(window){
             cout << "Window created successfully!\n";
         }

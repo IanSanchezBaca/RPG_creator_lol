@@ -12,7 +12,7 @@ class Game
 
     void test_print();
 
-    void initialize(std::string title,
+    void initialize(char *title,
                     int xpos,
                     int ypos,
                     int width,
