@@ -24,7 +24,7 @@ void Game::initialize(string title, int xpos, int ypos, int width, int height){
         
         renderer = SDL_CreateRenderer(window, -1, 0);
         if(renderer){
-            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 0);
             cout << "Renderer created successfully!\n";
         }
         else{
@@ -36,6 +36,7 @@ void Game::initialize(string title, int xpos, int ypos, int width, int height){
         cout << "ERROR: " << SDL_GetError() << endl;
         exit(-1);
     }
+    isRunning = true;
 }
 
 void Game::EventHandler(){
@@ -53,7 +54,10 @@ void Game::EventHandler(){
     }
 }
 
-void Game::update(){}
+void Game::update(){
+    // test_counter++;
+    // cout << test_counter << endl;
+}
 
 void Game::render(){
     SDL_RenderClear(renderer);

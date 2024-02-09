@@ -29,6 +29,7 @@ class Game
     bool running();
 
     private:
+    int test_counter = 0;
     bool isRunning;
     SDL_Window *window = NULL;
     SDL_Renderer *renderer = NULL;
