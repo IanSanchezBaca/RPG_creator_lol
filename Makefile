@@ -7,7 +7,7 @@ CC = g++
 CFLAGS = -Wall -Wextra -std=c++11
 
 # Linker flags for SDL2
-LDFLAGS = -lSDL2
+LDFLAGS = -lSDL2 -lSDL2_image
 
 # Source files
 SRCS = main.cpp game.cpp
