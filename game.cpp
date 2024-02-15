@@ -1,7 +1,10 @@
 #include <iostream>
 #include "game.h"
+#include "SDL2/SDL_image.h"
 
 using namespace std;
+
+SDL_Texture* playerTex;
 
 // constructor
 Game::Game(){}
@@ -26,7 +29,7 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
         
         renderer = SDL_CreateRenderer(window, -1, 0);
         if(renderer){
-            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 0);
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             cout << "Renderer created successfully!\n";
         }
         else{
@@ -38,7 +41,14 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
         cout << "ERROR: " << SDL_GetError() << endl;
         exit(-1);
     }
+    
     isRunning = true;
+
+    SDL_Surface* tempSurface = IMG_Load("media/characters/test_char.png");
+    playerTex = SDL_CreateTextureFromSurface(renderer, tempSurface);
+    SDL_FreeSurface(tempSurface);
+    
+
 }
 
 void Game::EventHandler(){
@@ -63,8 +73,9 @@ void Game::update(){
 
 void Game::render(){
     SDL_RenderClear(renderer);
-    
     // we would add stuff to render here
+
+    SDL_RenderCopy(renderer, playerTex, NULL, NULL);
 
     SDL_RenderPresent(renderer);
 }
