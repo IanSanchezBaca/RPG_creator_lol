@@ -12,13 +12,16 @@ Game *game = NULL;
 
 int main(int argc, char *args[])
 {
+    const int FPS = 60;
+    // will use this to limit fps? lol
+
     game = new Game();
 
     game->initialize("RPG Creator",
                      SDL_WINDOWPOS_CENTERED,
                      SDL_WINDOWPOS_CENTERED,
-                     800,
-                     600);
+                     1280,
+                     720);
 
     while (game->running())
     {
