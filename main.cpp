@@ -12,7 +12,7 @@ Game *game = NULL;
 
 int main(int argc, char *args[])
 {
-    const int FPS = 60;
+    // const int FPS = 60;
     // will use this to limit fps? lol
 
     game = new Game();
