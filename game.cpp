@@ -1,5 +1,6 @@
 #include <iostream>
 #include "game.h"
+#include "texture_manager.h"
 #include "SDL2/SDL_image.h"
 
 using namespace std;
