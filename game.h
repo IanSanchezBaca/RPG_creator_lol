@@ -36,11 +36,12 @@ class Game
     SDL_Renderer *renderer = NULL;
     
     
-    SDL_Texture* playerTex;
+    // SDL_Texture* playerTex;
     // used this to draw the image
-    
-    SDL_Rect srcR, destR;
+    // SDL_Rect srcR, destR;
     // used this to resize and move image
+
+    // no longer needed as they are being handled in another place
 };
 
 #endif

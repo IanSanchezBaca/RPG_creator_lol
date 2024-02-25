@@ -10,7 +10,7 @@ using namespace std;
 
 Game *game = NULL;
 
-int main(int argc, char *args[])
+int main(/*int argc, char *args[]*/)
 {
     const int FPS = 60;
     // will use this to limit fps? lol

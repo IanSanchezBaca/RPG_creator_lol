@@ -1,10 +1,12 @@
 #include <iostream>
 #include "game.h"
 #include "TextureManager.h"
+#include "GameObject.h"
 // #include "SDL2/SDL_image.h"
 
 using namespace std;
 
+GameObject * player;
 
 // constructor
 Game::Game(){}
@@ -29,7 +31,7 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
         
         renderer = SDL_CreateRenderer(window, -1, 0);
         if(renderer){
-            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             cout << "Renderer created successfully!\n";
         }
         else{
@@ -48,7 +50,10 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
     // playerTex = SDL_CreateTextureFromSurface(renderer, tempSurface);
     // SDL_FreeSurface(tempSurface);
 
-    playerTex = TextureManager::LoadTexture("media/characters/test_char.png", renderer);  
+    // playerTex = TextureManager::LoadTexture("media/characters/test_char.png", renderer);  
+    // no longer needed 
+
+    player = new GameObject("media/characters/test_char.png", renderer, 0, 0);
     
 
 }
@@ -71,17 +76,21 @@ void Game::EventHandler(){
 void Game::update(){
     test_counter++;
     
-    destR.h = 64;
-    destR.w = 64;
-    destR.x = test_counter;
+    // destR.h = 100;
+    // destR.w = 100;
+    // destR.x = test_counter;
     // cout << test_counter << endl;
+    // no longer needed as gameobect takes care of this
+
+    player->Update();
 }
 
 void Game::render(){
     SDL_RenderClear(renderer);
     // we would add stuff to render here
 
-    SDL_RenderCopy(renderer, playerTex, NULL, &destR);
+    // SDL_RenderCopy(renderer, playerTex, NULL, &destR);
+    player->Render();
 
     SDL_RenderPresent(renderer);
 }
