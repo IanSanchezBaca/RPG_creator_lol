@@ -1,6 +1,6 @@
 #include <iostream>
 #include "game.h"
-#include "texture_manager.h"
+#include "TextureManager.h"
 #include "SDL2/SDL_image.h"
 
 using namespace std;
@@ -68,6 +68,7 @@ void Game::EventHandler(){
 
 void Game::update(){
     test_counter++;
+    
     destR.h = 64;
     destR.w = 64;
     destR.x = test_counter;
