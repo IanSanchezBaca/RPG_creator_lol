@@ -1,7 +1,7 @@
 #include <iostream>
 #include "game.h"
 #include "TextureManager.h"
-#include "SDL2/SDL_image.h"
+// #include "SDL2/SDL_image.h"
 
 using namespace std;
 
@@ -44,9 +44,11 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
     
     isRunning = true;
 
-    SDL_Surface* tempSurface = IMG_Load("media/characters/test_char.png");
-    playerTex = SDL_CreateTextureFromSurface(renderer, tempSurface);
-    SDL_FreeSurface(tempSurface);
+    // SDL_Surface* tempSurface = IMG_Load("media/characters/test_char.png");
+    // playerTex = SDL_CreateTextureFromSurface(renderer, tempSurface);
+    // SDL_FreeSurface(tempSurface);
+
+    playerTex = TextureManager::LoadTexture("media/characters/test_char.png", renderer);  
     
 
 }
