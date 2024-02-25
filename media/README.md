@@ -1,7 +1,8 @@
 # These are the folders for the media
 
 ## characters
-* test_character.bmp
+* test_char.png
+<img src="characters/test_char.png" width="100">
 
 ## main_menu
-* test_MainMenu.bmp
+* *nothing so far*
