@@ -38,7 +38,7 @@ class Game
     SDL_Window *window = NULL;
     
     // SDL_Renderer *renderer = NULL;
-    // moved this up top
+    // moved this from private to public
     
     // SDL_Texture* playerTex;
     // used this to draw the image

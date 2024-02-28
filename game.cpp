@@ -8,6 +8,9 @@ using namespace std;
 
 GameObject * player;
 GameObject * player2;
+// these are for examples
+
+SDL_Renderer* Game::renderer = NULL;
 
 // constructor
 Game::Game(){}
@@ -54,8 +57,8 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
     // playerTex = TextureManager::LoadTexture("media/characters/test_char.png", renderer);  
     // no longer needed 
 
-    player = new GameObject("media/characters/test_char.png", renderer, 0, 0);
-    player2 = new GameObject("media/characters/test_char_P2.png", renderer, 50, 50);
+    player = new GameObject("media/characters/test_char.png", 0, 0);
+    player2 = new GameObject("media/characters/test_char_P2.png", 50, 50);
 
 }
 
