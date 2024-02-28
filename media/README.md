@@ -8,10 +8,12 @@
 <br><img src="characters/Rito.png" width="100">
 </details>
 
+<details>
 <summary>Rito_P2.png</summary>
 <br><img src="characters/Rito_P2.png" width="100">
 </details>
 
+<details>
 <summary>test_char.png</summary>
 <br><img src="characters/test_char.png" width="100">
 </details>
