@@ -29,12 +29,16 @@ class Game
 
     bool running();
 
+    static SDL_Renderer *renderer;
+    
     private:
+
     int test_counter = 0;
     bool isRunning;
     SDL_Window *window = NULL;
-    SDL_Renderer *renderer = NULL;
     
+    // SDL_Renderer *renderer = NULL;
+    // moved this up top
     
     // SDL_Texture* playerTex;
     // used this to draw the image
