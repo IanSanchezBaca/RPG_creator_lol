@@ -1,23 +1,18 @@
 #include <iostream>
 #include "game.h"
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "Map.h"
-#include "ECS/ECS.h"
 #include "ECS/Components.h"
-
 using namespace std;
 
-GameObject * player;
-GameObject * player2;
-// these are for examples
 
 Map* map;
+Manager manager;
 
 SDL_Renderer* Game::renderer = NULL;
 
-Manager manager;
-auto& newPlayer(manager.addEntity());
+
+auto& player(manager.addEntity());
 
 // constructor
 Game::Game(){}
@@ -49,20 +44,19 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
             cout << "ERROR: " << SDL_GetError() << endl;
             exit(-1);
         }
+        isRunning = true;
     }
     else{
         cout << "ERROR: " << SDL_GetError() << endl;
         exit(-1);
     }
     
-    isRunning = true;
-
-    player = new GameObject("media/characters/test_char.png", 0, 0);
-    player2 = new GameObject("media/characters/test_char_P2.png", 50, 50);
     map = new Map();
 
-    newPlayer.addComponent<PositionComponent>();
-    newPlayer.getComponent<PositionComponent>().setPos(500, 500);
+    //ecs implementation
+    player.addComponent<PositionComponent>();
+    player.addComponent<SpriteComponent>("media/characters/test_char.png");
+
 }
 
 void Game::EventHandler(){
@@ -83,27 +77,24 @@ void Game::EventHandler(){
 void Game::update(){
     test_counter++;
     // just a simple counter
-
-    player->Update();
-    player2->Update();
-    // two game objects
-
+    
     
     manager.update();
-    std::cout << newPlayer.getComponent<PositionComponent>().x() << ", " << newPlayer.getComponent<PositionComponent>().y() << std::endl;
+    manager.refresh();
+  
 
 }
 
+/* So the way drawing works is 
+ * that whatever you draw first 
+ * is behind whatever you draw next */
 void Game::render(){
     SDL_RenderClear(renderer);
     // we would add stuff to render here
-
+    
     map->DrawMap();
-    // draw the map first
-
-    player->Render();
-    player2->Render();
-    // then draw players on top of it
+    
+    manager.draw();
 
     SDL_RenderPresent(renderer);
 }
