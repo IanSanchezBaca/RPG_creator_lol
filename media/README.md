@@ -53,7 +53,7 @@ More specifically,
         srcRect.x = 0;
         srcRect.y = 0;
 
-        /* you would need to update these to match the size of your "sprite"*/
+        /* you would need to update these to match the size of your "sprite" */
         srcRect.w = 32; 
         srcRect.h = 32;
         ///
