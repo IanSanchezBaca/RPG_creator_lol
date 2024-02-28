@@ -22,6 +22,7 @@ inline ComponentID getComponentTypeID()
 template <typename T> inline ComponentID getComponentTypeID() noexcept
 {
     static ComponentID typeID = getComponentTypeID();
+    // static ComponentID typeID{getComponentTypeID()};
     return typeID;
 }
 
@@ -107,7 +108,7 @@ public:
     void draw()
     {
         for (auto &e : entities)
-            e->update();
+            e->draw();
     }
 
     void refresh()
