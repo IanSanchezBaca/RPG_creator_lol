@@ -10,7 +10,7 @@ CFLAGS = -Wall -Wextra -std=c++11
 LDFLAGS = -lSDL2 -lSDL2_image
 
 # Source files
-SRCS = TextureManager.cpp main.cpp GameObject.cpp game.cpp
+SRCS = TextureManager.cpp main.cpp GameObject.cpp game.cpp Map.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)

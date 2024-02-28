@@ -24,8 +24,8 @@ int main(/*int argc, char *args[]*/)
     game->initialize("RPG Creator",
                      SDL_WINDOWPOS_CENTERED,
                      SDL_WINDOWPOS_CENTERED,
-                     1280,
-                     720);
+                     800, // width
+                     640); // height
 
     while (game->running())
     {
