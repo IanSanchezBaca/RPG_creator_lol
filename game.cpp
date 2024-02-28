@@ -55,7 +55,7 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
 
     //ecs implementation
     player.addComponent<PositionComponent>();
-    player.addComponent<SpriteComponent>("media/characters/test_char.png");
+    player.addComponent<SpriteComponent>("media/characters/Rito.png");
 
 }
 
@@ -78,10 +78,12 @@ void Game::update(){
     test_counter++;
     // just a simple counter
     
-    
-    manager.update();
     manager.refresh();
-  
+    manager.update();
+    
+    if(player.getComponent<PositionComponent>().x() > 100){
+        player.getComponent<SpriteComponent>().setTex("media/characters/Rito_P2.png");
+    }
 
 }
 
