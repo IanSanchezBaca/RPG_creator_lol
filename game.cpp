@@ -2,6 +2,7 @@
 #include "game.h"
 #include "TextureManager.h"
 #include "GameObject.h"
+#include "Map.h"
 // #include "SDL2/SDL_image.h"
 
 using namespace std;
@@ -10,7 +11,11 @@ GameObject * player;
 GameObject * player2;
 // these are for examples
 
+Map* map;
+
 SDL_Renderer* Game::renderer = NULL;
+
+
 
 // constructor
 Game::Game(){}
@@ -59,6 +64,7 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
 
     player = new GameObject("media/characters/test_char.png", 0, 0);
     player2 = new GameObject("media/characters/test_char_P2.png", 50, 50);
+    map = new Map();
 
 }
 
@@ -94,9 +100,12 @@ void Game::render(){
     SDL_RenderClear(renderer);
     // we would add stuff to render here
 
-    // SDL_RenderCopy(renderer, playerTex, NULL, &destR);
+    map->DrawMap();
+    // draw the map first
+
     player->Render();
     player2->Render();
+    // then draw players on top of it
 
     SDL_RenderPresent(renderer);
 }
