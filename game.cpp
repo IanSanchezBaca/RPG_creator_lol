@@ -7,6 +7,7 @@
 using namespace std;
 
 GameObject * player;
+GameObject * player2;
 
 // constructor
 Game::Game(){}
@@ -54,7 +55,7 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
     // no longer needed 
 
     player = new GameObject("media/characters/test_char.png", renderer, 0, 0);
-    
+    player2 = new GameObject("media/characters/test_char_P2.png", renderer, 50, 50);
 
 }
 
@@ -83,6 +84,7 @@ void Game::update(){
     // no longer needed as gameobect takes care of this
 
     player->Update();
+    player2->Update();
 }
 
 void Game::render(){
@@ -91,6 +93,7 @@ void Game::render(){
 
     // SDL_RenderCopy(renderer, playerTex, NULL, &destR);
     player->Render();
+    player2->Render();
 
     SDL_RenderPresent(renderer);
 }
