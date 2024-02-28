@@ -62,6 +62,7 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
     map = new Map();
 
     newPlayer.addComponent<PositionComponent>();
+    newPlayer.getComponent<PositionComponent>().setPos(500, 500);
 }
 
 void Game::EventHandler(){
@@ -87,6 +88,7 @@ void Game::update(){
     player2->Update();
     // two game objects
 
+    
     manager.update();
     std::cout << newPlayer.getComponent<PositionComponent>().x() << ", " << newPlayer.getComponent<PositionComponent>().y() << std::endl;
 
