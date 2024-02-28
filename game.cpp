@@ -1,21 +1,18 @@
 #include <iostream>
 #include "game.h"
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "Map.h"
-// #include "SDL2/SDL_image.h"
-
+#include "ECS/Components.h"
 using namespace std;
 
-GameObject * player;
-GameObject * player2;
-// these are for examples
 
 Map* map;
+Manager manager;
 
 SDL_Renderer* Game::renderer = NULL;
 
 
+auto& player(manager.addEntity());
 
 // constructor
 Game::Game(){}
@@ -47,24 +44,18 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
             cout << "ERROR: " << SDL_GetError() << endl;
             exit(-1);
         }
+        isRunning = true;
     }
     else{
         cout << "ERROR: " << SDL_GetError() << endl;
         exit(-1);
     }
     
-    isRunning = true;
-
-    // SDL_Surface* tempSurface = IMG_Load("media/characters/test_char.png");
-    // playerTex = SDL_CreateTextureFromSurface(renderer, tempSurface);
-    // SDL_FreeSurface(tempSurface);
-
-    // playerTex = TextureManager::LoadTexture("media/characters/test_char.png", renderer);  
-    // no longer needed 
-
-    player = new GameObject("media/characters/test_char.png", 0, 0);
-    player2 = new GameObject("media/characters/test_char_P2.png", 50, 50);
     map = new Map();
+
+    //ecs implementation
+    player.addComponent<PositionComponent>();
+    player.addComponent<SpriteComponent>("media/characters/Rito.png");
 
 }
 
@@ -85,27 +76,27 @@ void Game::EventHandler(){
 
 void Game::update(){
     test_counter++;
+    // just a simple counter
     
-    // destR.h = 100;
-    // destR.w = 100;
-    // destR.x = test_counter;
-    // cout << test_counter << endl;
-    // no longer needed as gameobect takes care of this
+    manager.refresh();
+    manager.update();
+    
+    if(player.getComponent<PositionComponent>().x() > 100){
+        player.getComponent<SpriteComponent>().setTex("media/characters/Rito_P2.png");
+    }
 
-    player->Update();
-    player2->Update();
 }
 
+/* So the way drawing works is 
+ * that whatever you draw first 
+ * is behind whatever you draw next */
 void Game::render(){
     SDL_RenderClear(renderer);
     // we would add stuff to render here
-
+    
     map->DrawMap();
-    // draw the map first
-
-    player->Render();
-    player2->Render();
-    // then draw players on top of it
+    
+    manager.draw();
 
     SDL_RenderPresent(renderer);
 }
