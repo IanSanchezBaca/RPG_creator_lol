@@ -3,7 +3,8 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Map.h"
-// #include "SDL2/SDL_image.h"
+#include "ECS.h"
+#include "Components.h"
 
 using namespace std;
 
@@ -15,7 +16,8 @@ Map* map;
 
 SDL_Renderer* Game::renderer = NULL;
 
-
+Manager manager;
+auto& newPlayer(manager.addEntity());
 
 // constructor
 Game::Game(){}
@@ -55,17 +57,11 @@ void Game::initialize(char* title, int xpos, int ypos, int width, int height){
     
     isRunning = true;
 
-    // SDL_Surface* tempSurface = IMG_Load("media/characters/test_char.png");
-    // playerTex = SDL_CreateTextureFromSurface(renderer, tempSurface);
-    // SDL_FreeSurface(tempSurface);
-
-    // playerTex = TextureManager::LoadTexture("media/characters/test_char.png", renderer);  
-    // no longer needed 
-
     player = new GameObject("media/characters/test_char.png", 0, 0);
     player2 = new GameObject("media/characters/test_char_P2.png", 50, 50);
     map = new Map();
 
+    newPlayer.addComponent<PositionComponent>();
 }
 
 void Game::EventHandler(){
@@ -85,15 +81,15 @@ void Game::EventHandler(){
 
 void Game::update(){
     test_counter++;
-    
-    // destR.h = 100;
-    // destR.w = 100;
-    // destR.x = test_counter;
-    // cout << test_counter << endl;
-    // no longer needed as gameobect takes care of this
+    // just a simple counter
 
     player->Update();
     player2->Update();
+    // two game objects
+
+    manager.update();
+    std::cout << newPlayer.getComponent<PositionComponent>().x() << ", " << newPlayer.getComponent<PositionComponent>().y() << std::endl;
+
 }
 
 void Game::render(){
