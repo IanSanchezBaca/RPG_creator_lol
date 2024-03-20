@@ -21,6 +21,13 @@ public:
         position.y = 0.0f;
     }
 
+    TransformComponent(int sc)
+    {
+        position.x = 0.0f;
+        position.y = 0.0f;
+        scale = sc;
+    }
+
     TransformComponent(float x, float y)
     {
         position.x = x;
