@@ -4,6 +4,7 @@
 #include "Map.h"
 #include "ECS/Components.h"
 #include "Vector2d.h"
+#include "Collision.h"
 using namespace std;
 
 Map *map;
@@ -14,6 +15,7 @@ SDL_Renderer *Game::renderer = NULL;
 SDL_Event Game::event;
 
 auto &player(manager.addEntity());
+auto &wall(manager.addEntity());
 
 // constructor
 Game::Game() {}
@@ -65,6 +67,11 @@ void Game::initialize(char *title, int xpos, int ypos, int width, int height)
     player.addComponent<TransformComponent>();
     player.addComponent<SpriteComponent>("media/characters/Rito.png");
     player.addComponent<KeyboardController>();
+    player.addComponent<ColliderComponent>("Player");
+
+    wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
+    wall.addComponent<SpriteComponent>("media/background/dirt.png");
+    wall.addComponent<ColliderComponent>("wall");
 
 } // initialize
 

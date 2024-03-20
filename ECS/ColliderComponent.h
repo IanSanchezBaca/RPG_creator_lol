@@ -9,11 +9,11 @@ class ColliderComponent : public Component
 private:
     /* data */
 public:
-    ColliderComponent(/* args */);
-    ~ColliderComponent();
-
     SDL_Rect collider;
     std::string tag;
+
+    ColliderComponent(std::string t) { tag = t; }
+    // ~ColliderComponent();
 
     TransformComponent *transform;
 
@@ -28,20 +28,12 @@ public:
 
     void update() override
     {
-        collider.x = transform->position.x;
-        collider.y = transform->position.y;
+        collider.x = static_cast<int>(transform->position.x);
+        collider.y = static_cast<int>(transform->position.y);
 
         collider.w = transform->width * transform->scale;
         collider.h = transform->height * transform->scale;
     }
 };
-
-ColliderComponent::ColliderComponent(/* args */)
-{
-}
-
-ColliderComponent::~ColliderComponent()
-{
-}
 
 #endif
