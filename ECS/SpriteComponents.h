@@ -5,51 +5,54 @@
 #include "Components.h"
 #include "SDL2/SDL.h"
 
-class SpriteComponent : public Component{
-    private:
-        PositionComponent *position;
-        SDL_Texture *texture;
-        SDL_Rect srcRect, destRect;
+class SpriteComponent : public Component
+{
+private:
+    TransformComponent *transform;
+    SDL_Texture *texture;
+    SDL_Rect srcRect, destRect;
 
-    public: 
+public:
     SpriteComponent() = default;
-    SpriteComponent(const char* path){
+    SpriteComponent(const char *path)
+    {
 
         setTex(path);
-
     }
 
-    void setTex(const char* path){
+    void setTex(const char *path)
+    {
         texture = TextureManager::LoadTexture(path);
     }
-    
-    void init() override{
-        position = &entity->getComponent<PositionComponent>();
-        
+
+    void init() override
+    {
+        transform = &entity->getComponent<TransformComponent>();
+
         srcRect.x = 0;
         srcRect.y = 0;
         srcRect.w = 32;
         srcRect.h = 32;
-        
+
         destRect.w = 64;
         destRect.h = 64;
 
-    }// init
+    } // init
 
-    void update() override{
+    void update() override
+    {
 
-        destRect.x = position->x();
-        destRect.y = position->y();
+        destRect.x = (int)transform->position.x;
+        destRect.y = (int)transform->position.y;
 
-    }// update
+    } // update
 
-    void draw() override{
+    void draw() override
+    {
 
         TextureManager::Draw(texture, srcRect, destRect);
 
-    }// draw
+    } // draw
 };
-
-
 
 #endif
