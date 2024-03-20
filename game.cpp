@@ -64,7 +64,7 @@ void Game::initialize(char *title, int xpos, int ypos, int width, int height)
     map = new Map();
 
     // ecs implementation
-    player.addComponent<TransformComponent>();
+    player.addComponent<TransformComponent>(2);
     player.addComponent<SpriteComponent>("media/characters/Rito.png");
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("Player");
@@ -97,12 +97,13 @@ void Game::update()
     manager.refresh();
     manager.update();
 
-    // player.getComponent<TransformComponent>().position.Add(Vector2D(5, 0));
+    if (Collision::AABB(player.getComponent<ColliderComponent>().collider,
+                        wall.getComponent<ColliderComponent>().collider))
+    {
+        player.getComponent<TransformComponent>().scale = 1;
+        std::cout << "Wall Hit!\n";
+    }
 
-    // if (player.getComponent<TransformComponent>().position.x > 100)
-    // {
-    //     player.getComponent<SpriteComponent>().setTex("media/characters/Rito_P2.png");
-    // }
 } // update
 
 /* So the way drawing works is
