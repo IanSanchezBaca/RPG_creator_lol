@@ -4,5 +4,6 @@
 #include "ECS.h"
 #include "TransformComponent.h"
 #include "SpriteComponents.h"
+#include "KeyboardController.h"
 
 #endif
