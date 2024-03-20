@@ -11,6 +11,8 @@ Manager manager;
 
 SDL_Renderer *Game::renderer = NULL;
 
+SDL_Event Game::event;
+
 auto &player(manager.addEntity());
 
 // constructor
@@ -62,11 +64,12 @@ void Game::initialize(char *title, int xpos, int ypos, int width, int height)
     // ecs implementation
     player.addComponent<TransformComponent>();
     player.addComponent<SpriteComponent>("media/characters/Rito.png");
+    player.addComponent<KeyboardController>();
+
 } // initialize
 
 void Game::EventHandler()
 {
-    SDL_Event event;
     SDL_PollEvent(&event);
 
     switch (event.type)
@@ -86,12 +89,13 @@ void Game::update()
     // just a simple counter
     manager.refresh();
     manager.update();
-    player.getComponent<TransformComponent>().position.Add(Vector2D(5, 0));
 
-    if (player.getComponent<TransformComponent>().position.x > 100)
-    {
-        player.getComponent<SpriteComponent>().setTex("media/characters/Rito_P2.png");
-    }
+    // player.getComponent<TransformComponent>().position.Add(Vector2D(5, 0));
+
+    // if (player.getComponent<TransformComponent>().position.x > 100)
+    // {
+    //     player.getComponent<SpriteComponent>().setTex("media/characters/Rito_P2.png");
+    // }
 } // update
 
 /* So the way drawing works is
