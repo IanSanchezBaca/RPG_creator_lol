@@ -3,39 +3,41 @@
 
 #include "Components.h"
 
-class PositionComponent : public Component
+class TransformComponent : public Component
 {
 private:
     int xpos;
     int ypos;
 
 public:
-
-    PositionComponent(){
+    TransformComponent()
+    {
         xpos = 0;
         ypos = 0;
     }
 
-    PositionComponent(int x, int y){
+    TransformComponent(int x, int y)
+    {
         xpos = x;
         ypos = y;
     }
 
-    int x(){ return xpos; }
-    void x(int x){ xpos = x; }
-    int y(){ return ypos; }
-    void y(int y){ ypos = y; }
-    
-    void update() override{
+    int x() { return xpos; }
+    void x(int x) { xpos = x; }
+    int y() { return ypos; }
+    void y(int y) { ypos = y; }
+
+    void update() override
+    {
         xpos++;
         ypos++;
-    }// update
+    } // update
 
-    void setPos(int x, int y){
+    void setPos(int x, int y)
+    {
         xpos = x;
         ypos = y;
-    }// setPos
-
+    } // setPos
 };
 
 #endif
