@@ -5,5 +5,6 @@
 #include "TransformComponent.h"
 #include "SpriteComponents.h"
 #include "KeyboardController.h"
+#include "ColliderComponent.h"
 
 #endif
