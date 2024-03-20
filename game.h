@@ -7,8 +7,8 @@
 
 class Game
 {
-    public:
-    Game(); 
+public:
+    Game();
     ~Game();
 
     void test_print();
@@ -18,7 +18,7 @@ class Game
                     int ypos,
                     int width,
                     int height);
-    
+
     void EventHandler();
 
     void update();
@@ -30,16 +30,17 @@ class Game
     bool running();
 
     static SDL_Renderer *renderer;
-    
-    private:
 
+    static SDL_Event event;
+
+private:
     int test_counter = 0;
     bool isRunning;
     SDL_Window *window = NULL;
-    
+
     // SDL_Renderer *renderer = NULL;
     // moved this from private to public
-    
+
     // SDL_Texture* playerTex;
     // used this to draw the image
     // SDL_Rect srcR, destR;
