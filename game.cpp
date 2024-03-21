@@ -29,7 +29,7 @@ Game::Game() {}
 // destructor
 Game::~Game() {}
 
-void Game::initialize(const char *title, int xpos, int ypos, int width, int height)
+void Game::initialize(char *title, int xpos, int ypos, int width, int height)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
     {

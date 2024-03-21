@@ -21,7 +21,7 @@ int main(/*int argc, char *args[]*/)
 
     game = new Game();
 
-    const char *name = "RPG Creator";
+    char *name = "RPG Creator";
 
     game->initialize(name,
                      SDL_WINDOWPOS_CENTERED,

@@ -13,7 +13,7 @@ public:
 
     SDL_Rect tileRect;
     int tileID;
-    const char *path;
+    char *path;
 
     // std::string path;
 
