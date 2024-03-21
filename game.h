@@ -4,7 +4,8 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include <vector>
-#include <stdio.h>
+// #include <stdio.h>
+#include <iostream>
 
 class ColliderComponent;
 
@@ -16,7 +17,7 @@ public:
 
     void test_print();
 
-    void initialize(const char *title,
+    void initialize(char *title,
                     int xpos,
                     int ypos,
                     int width,

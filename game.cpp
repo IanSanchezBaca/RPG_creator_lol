@@ -72,8 +72,10 @@ void Game::initialize(char *title, int xpos, int ypos, int width, int height)
     // ecs implementation
 
     tile0.addComponent<TileComponent>(200, 200, 32, 32, 0);
+
     tile1.addComponent<TileComponent>(250, 250, 32, 32, 1);
     tile1.addComponent<ColliderComponent>("dirt");
+
     tile2.addComponent<TileComponent>(150, 150, 32, 32, 2);
     tile2.addComponent<ColliderComponent>("grass");
 
@@ -105,17 +107,18 @@ void Game::EventHandler()
 
 void Game::update()
 {
-    test_counter++;
-    // just a simple counter
+    test_counter++; // just a simple counter
     manager.refresh();
     manager.update();
 
-    if (Collision::AABB(player.getComponent<ColliderComponent>().collider,
-                        wall.getComponent<ColliderComponent>().collider))
+    for (auto cc : colliders)
     {
-        player.getComponent<TransformComponent>().scale = 1;
+        Collision::AABB(player.getComponent<ColliderComponent>(), *cc);
+        // {
+        // player.getComponent<TransformComponent>().scale = 1;
         player.getComponent<TransformComponent>().velocity * -1;
         std::cout << "Wall Hit!\n";
+        // }
     }
 
 } // update
@@ -128,7 +131,7 @@ void Game::render()
     SDL_RenderClear(renderer);
     // we would add stuff to render here
 
-    map->DrawMap();
+    // map->DrawMap();
 
     manager.draw();
 
