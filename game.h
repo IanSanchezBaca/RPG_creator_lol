@@ -16,7 +16,7 @@ public:
 
     void test_print();
 
-    void initialize(char *title,
+    void initialize(const char *title,
                     int xpos,
                     int ypos,
                     int width,
