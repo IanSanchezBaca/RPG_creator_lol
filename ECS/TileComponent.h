@@ -7,15 +7,15 @@
 
 class TileComponent : public Component
 {
-private:
-    /* data */
 public:
     TransformComponent *transform;
     SpriteComponent *sprite;
 
     SDL_Rect tileRect;
     int tileID;
-    char *path;
+    const char *path;
+
+    // std::string path;
 
     TileComponent() = default;
 
