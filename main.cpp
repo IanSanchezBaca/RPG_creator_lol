@@ -17,14 +17,16 @@ int main(/*int argc, char *args[]*/)
 
     const int frameDelay = 1000 / FPS;
     Uint32 frameStart;
-    int frameTime; 
+    int frameTime;
 
     game = new Game();
 
-    game->initialize("RPG Creator",
+    char *name = "RPG Creator";
+
+    game->initialize(name,
                      SDL_WINDOWPOS_CENTERED,
                      SDL_WINDOWPOS_CENTERED,
-                     800, // width
+                     800,  // width
                      640); // height
 
     while (game->running())
@@ -36,10 +38,10 @@ int main(/*int argc, char *args[]*/)
 
         frameTime = SDL_GetTicks() - frameStart;
 
-    if(frameDelay > frameTime){
-        SDL_Delay(frameDelay - frameTime);
-    }
-
+        if (frameDelay > frameTime)
+        {
+            SDL_Delay(frameDelay - frameTime);
+        }
     }
 
     game->close();

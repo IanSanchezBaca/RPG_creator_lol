@@ -3,7 +3,11 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
-#include <stdio.h>
+#include <vector>
+// #include <stdio.h>
+#include <iostream>
+
+class ColliderComponent;
 
 class Game
 {
@@ -33,20 +37,12 @@ public:
 
     static SDL_Event event;
 
+    static std::vector<ColliderComponent *> colliders;
+
 private:
     int test_counter = 0;
     bool isRunning;
     SDL_Window *window = NULL;
-
-    // SDL_Renderer *renderer = NULL;
-    // moved this from private to public
-
-    // SDL_Texture* playerTex;
-    // used this to draw the image
-    // SDL_Rect srcR, destR;
-    // used this to resize and move image
-
-    // no longer needed as they are being handled in another place
 };
 
 #endif
