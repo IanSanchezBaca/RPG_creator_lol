@@ -7,7 +7,7 @@
 #include "Collision.h"
 using namespace std;
 
-Map *map;
+Map *myMap;
 Manager manager;
 
 SDL_Renderer *Game::renderer = NULL;
@@ -73,14 +73,14 @@ void Game::initialize(char *title, int xpos, int ypos, int width, int height)
         exit(-1);
     }
 
-    map = new Map();
+    myMap = new Map();
 
     /* ecs implementation */
 
     Map::LoadMap("media/TileMaps/TestTileMap.txt", 16, 16);
 
     player.addComponent<TransformComponent>(2);
-    player.addComponent<SpriteComponent>("media/characters/RitoSpriteSheet.png", 4, 100);
+    player.addComponent<SpriteComponent>("media/characters/RitoAnim.png", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("Player");
     player.addGroup(groupPlayers);
