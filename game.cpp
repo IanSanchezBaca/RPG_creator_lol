@@ -80,7 +80,7 @@ void Game::initialize(char *title, int xpos, int ypos, int width, int height)
     Map::LoadMap("media/TileMaps/TestTileMap.txt", 16, 16);
 
     player.addComponent<TransformComponent>(2);
-    player.addComponent<SpriteComponent>("media/characters/Rito.png");
+    player.addComponent<SpriteComponent>("media/characters/RitoSpriteSheet.png", 4, 100);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("Player");
     player.addGroup(groupPlayers);
