@@ -11,6 +11,7 @@ public:
     SpriteComponent *sprite;
     void init() override
     {
+        std::cout << "Initializing the Keyboard!\n";
         transform = &entity->getComponent<TransformComponent>();
         sprite = &entity->getComponent<SpriteComponent>();
     }
@@ -25,6 +26,7 @@ public:
             case SDLK_w: // up
                 transform->velocity.y = -1;
                 sprite->Play("Walk");
+                // std::cout << "walking up.\n";
                 break;
             case SDLK_a: // left
                 transform->velocity.x = -1;
@@ -68,6 +70,18 @@ public:
             default:
                 break;
             }
+        }
+
+        /* the mouse stuff */
+        if (Game::event.type == SDL_MOUSEBUTTONDOWN)
+        {
+            std::cout << "mouse clicked ";
+            if (Game::event.button.button == SDL_BUTTON_LEFT)
+            {
+                int x, y;
+                SDL_GetMouseState(&x, &y);
+                std::cout << "at position " << x << " " << y << "\n";
+                        }
         }
     }
 };

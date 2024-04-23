@@ -101,7 +101,9 @@ void Game::EventHandler()
     case SDL_QUIT:
         isRunning = false;
         break;
-
+    // case SDL_MOUSEBUTTONDOWN:
+    // cout << "Mouse clicked\n";
+    // break;
     default:
         break;
     }

@@ -1,2 +1,3 @@
 *.o
 rpg_creator
+*.json
