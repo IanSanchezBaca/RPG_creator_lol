@@ -77,7 +77,7 @@ void Game::initialize(char *title, int xpos, int ypos, int width, int height)
 
     /* ecs implementation */
 
-    Map::LoadMap("media/TileMaps/TestTileMap.txt", 16, 16);
+    Map::LoadMap("media/TileMaps/TestTileMap.txt", 16, 16); // change the map
 
     player.addComponent<TransformComponent>(2);
     player.addComponent<SpriteComponent>("media/characters/RitoAnim.png", true);
@@ -109,7 +109,7 @@ void Game::EventHandler()
 
 void Game::update()
 {
-    test_counter++; // just a simple counter
+    // test_counter++; // just a simple counter
     manager.refresh();
     manager.update();
 
@@ -119,7 +119,7 @@ void Game::update()
         // {
         // player.getComponent<TransformComponent>().scale = 1;
         player.getComponent<TransformComponent>().velocity * -1;
-        std::cout << "Wall Hit!\n";
+        // std::cout << "Wall Hit!\n";
         // }
     }
 
@@ -158,7 +158,7 @@ void Game::close()
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
     cout << "Game cleaned!\n";
-    cout << "Counter: " << test_counter << endl;
+    // cout << "Counter: " << test_counter << endl;
 } // close
 
 bool Game::running()
