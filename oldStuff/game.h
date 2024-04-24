@@ -13,6 +13,7 @@ class Game
 {
 public:
     Game();
+
     ~Game();
 
     void test_print();
@@ -42,8 +43,10 @@ public:
     static std::vector<ColliderComponent *> colliders;
 
 private:
-    int test_counter = 0;
-    bool isRunning;
+    int x, y; // should be the position that the mouse clicked
+
+    bool isRunning; // ehh...
+
     SDL_Window *window = NULL;
 };
 

@@ -28,9 +28,7 @@ enum groupLabels : std::size_t
 };
 
 // constructor
-Game::Game()
-{
-}
+Game::Game() {}
 
 // destructor
 Game::~Game() {}
