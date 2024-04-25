@@ -5,23 +5,23 @@ SDL_Event Game::event;
 
 Game::Game() {}
 
-void Game::initialize(string title, int xpos, int ypos, int width, int height)
+void Game::initialize(std::string title, int xpos, int ypos, int width, int height)
 {
     /* INITIALIZING SDL */
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
     {
         // string t = title;
-        cout << "SDL Initialized correctly.\n";
+        std::cout << "SDL Initialized correctly.\n";
 
         window = SDL_CreateWindow(title.c_str(), xpos, ypos, width, height, SDL_WINDOW_SHOWN);
 
         if (window)
         {
-            cout << "Window created successfully!\n";
+            std::cout << "Window created successfully!\n";
         }
         else
         {
-            cout << "Error: " << SDL_GetError() << endl;
+            std::cout << "Error: " << SDL_GetError() << std::endl;
             exit(-1);
         }
 
@@ -29,33 +29,27 @@ void Game::initialize(string title, int xpos, int ypos, int width, int height)
         if (renderer)
         {
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-            cout << "Renderer created successfully!\n";
+            std::cout << "Renderer created successfully!\n";
         }
         else
         {
-            cout << "ERROR: " << SDL_GetError() << endl;
+            std::cout << "ERROR: " << SDL_GetError() << std::endl;
             exit(-1);
         }
     }
     else
     {
-        cout << "ERROR: " << SDL_GetError() << endl;
+        std::cout << "ERROR: " << SDL_GetError() << std::endl;
         exit(-1);
     }
     isRunning = true;
 
-    /* INITIALIZING THE GRAPH */
+    /* INITIALIZING THE GRAPH
+     * - set all of them to -1 at start */
     for (int i = 0; i < 20; i++) // y?
     {
-        vector<int> temp(25, -1);
+        vect<int> temp(25, -1);
         grapha.push_back(temp);
-        // cout << i << ": ";
-
-        // for (int j = 0; j < 25; j++) // x?
-        // {
-        //     // cout << j << " ";
-        // }
-        // cout << "\n";
     }
 
 } // initialize
@@ -81,18 +75,18 @@ void Game::EventHandler()
             // Get the mouse coordinates
             x = event.button.x;
             y = event.button.y;
-            cout << "mouse was clicked at pos: (" << x << ", " << y << ")\n";
+            std::cout << "mouse was clicked at pos: (" << x << ", " << y << ")\n";
             round();
-            cout << "rounded up it's: (" << x << ", " << y << ")\n";
+            std::cout << "rounded up it's: (" << x << ", " << y << ")\n";
 
-            cout << "at that coordinate Grapha is: " << grapha[y][x] << "\n";
+            std::cout << "at that coordinate Grapha is: " << grapha[y][x] << "\n";
 
             rightClick = true;
         }
 
         if (event.button.button == SDL_BUTTON_RIGHT) // right click
         {
-            cout << "Right click is currently a WIP\n";
+            std::cout << "Right click is currently a WIP\n";
 
             // leftClick = true;
         }
@@ -132,8 +126,8 @@ void Game::close()
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
-    cout << "Game cleaned!\n";
-    // cout << "Counter: " << test_counter << endl;
+    std::cout << "Game cleaned!\n";
+    // std::cout << "Counter: " << test_counter <<std::endl;
 } // close
 
 bool Game::running()

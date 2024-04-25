@@ -7,17 +7,18 @@
 
 #ifndef GAME_H
 #define GAME_H
+#define vect std::vector
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include <vector>
-// #include <stdio.h>
 #include <iostream>
+#include <filesystem>
+
 // #include <unistd.h> // for sleep()
+// #include <stdio.h>
 
-using namespace std;
-
-// class ColliderComponent;
+// using namespace std; // might break
 
 class Game
 {
@@ -26,7 +27,7 @@ public:
 
     void test_print();
 
-    void initialize(string title,
+    void initialize(std::string title,
                     int xpos,
                     int ypos,
                     int width,
@@ -49,7 +50,9 @@ public:
     void round();
 
 private:
-    vector<vector<int>> grapha; // 25 x 20
+    vect<vect<int>> grapha; // 25 x 20
+
+    vect<std::string> tile; // keeps track of what each tile is
 
     /* these are the coordinates of grapha on the graph */
     int x = -1;
