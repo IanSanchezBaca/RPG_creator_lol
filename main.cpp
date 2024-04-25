@@ -10,12 +10,17 @@
 #include <iostream>
 #include <SDL2/SDL.h> // The sdl library
 #include <stdio.h>
+#include <csignal>
 
 #include "game.h"
 
+Game game; // putting this out here for reasons
+
+void segfaultHandler(int signal);
+
 int main(/*int argc, char *args[]*/)
 {
-    Game game;
+    signal(SIGSEGV, segfaultHandler);
 
     string name = "RPG Creator";
 
@@ -24,6 +29,10 @@ int main(/*int argc, char *args[]*/)
                     SDL_WINDOWPOS_CENTERED,
                     800,  // width
                     640); // height
+
+    // /* testing the segfault lol */
+    // int *ptr = nullptr;
+    // *ptr = 42;
 
     while (game.running())
     {
@@ -40,4 +49,15 @@ int main(/*int argc, char *args[]*/)
     game.close();
 
     return 0;
+}
+
+void segfaultHandler(int signal)
+{
+    (void)signal;
+
+    cerr << "Woops! I segfaulted. Cleaning up before closing.\n";
+
+    game.close();
+
+    exit(EXIT_FAILURE); // Terminate the program
 }
