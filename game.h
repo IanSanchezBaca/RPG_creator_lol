@@ -13,6 +13,7 @@
 #include <vector>
 // #include <stdio.h>
 #include <iostream>
+// #include <unistd.h> // for sleep()
 
 using namespace std;
 
@@ -48,11 +49,18 @@ public:
     void round();
 
 private:
-    vector<vector<int>> grapha;
+    vector<vector<int>> grapha; // 25 x 20
 
-    int x, y; // should be the position that the mouse clicked
+    /* these are the coordinates of grapha on the graph */
+    int x = -1;
+    int y = -1;
 
     bool isRunning;
+
+    int deleteMe = 0;
+
+    bool rightClick = false;
+    bool leftClick = false;
 
     SDL_Window *window = NULL;
 };

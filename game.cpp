@@ -45,13 +45,18 @@ void Game::initialize(string title, int xpos, int ypos, int width, int height)
     isRunning = true;
 
     /* INITIALIZING THE GRAPH */
-    // for (int i = 0; i < 20; i++) // y?
-    // {
-    //     for (int j = 0; j < 25; j++) // x?
-    //     {
-    //         grapha[j].push_back(-1);
-    //     }
-    // }
+    for (int i = 0; i < 20; i++) // y?
+    {
+        vector<int> temp(25, -1);
+        grapha.push_back(temp);
+        // cout << i << ": ";
+
+        // for (int j = 0; j < 25; j++) // x?
+        // {
+        //     // cout << j << " ";
+        // }
+        // cout << "\n";
+    }
 
 } // initialize
 
@@ -71,19 +76,25 @@ void Game::EventHandler()
 
     case SDL_MOUSEBUTTONDOWN:
 
-        if (event.button.button == SDL_BUTTON_LEFT)
+        if (event.button.button == SDL_BUTTON_LEFT) // left click
         {
             // Get the mouse coordinates
             x = event.button.x;
             y = event.button.y;
-            cout << "mouse was clicked at pos: " << x << " " << y << "\n";
+            cout << "mouse was clicked at pos: (" << x << ", " << y << ")\n";
             round();
-            cout << "rounded up it's: " << x << " " << y << "\n";
+            cout << "rounded up it's: (" << x << ", " << y << ")\n";
+
+            cout << "at that coordinate Grapha is: " << grapha[y][x] << "\n";
+
+            rightClick = true;
         }
 
-        if (event.button.button == SDL_BUTTON_RIGHT)
+        if (event.button.button == SDL_BUTTON_RIGHT) // right click
         {
             cout << "Right click is currently a WIP\n";
+
+            // leftClick = true;
         }
 
         break;
@@ -95,12 +106,25 @@ void Game::EventHandler()
 
 void Game::update()
 {
-    // cout << "Updating...\n";
+    if (!(x == -1) && !(y == -1))
+    {
+        if (rightClick)
+        {
+            grapha[y][x] = 1;
+            rightClick = false;
+        }
+    }
 }
 
 void Game::render()
 {
-    // cout << "Rendering...\n";
+
+    SDL_RenderClear(renderer);
+
+    // SDL_SetRenderDrawColor(renderer, 0, 0, deleteMe, 0);
+    // testing something
+
+    SDL_RenderPresent(renderer);
 }
 
 void Game::close()
