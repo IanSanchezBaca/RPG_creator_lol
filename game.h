@@ -1,3 +1,10 @@
+/// game.h
+/// This should take care of all the logic
+/// Part of the newStart files
+///
+/// @author: Ian Sanchez Baca
+/// @lastmodified: 04/24/24
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -38,7 +45,7 @@ public:
 
     static SDL_Event event;
 
-    void round(int, int);
+    void round();
 
 private:
     int x, y; // should be the position that the mouse clicked

@@ -1,3 +1,12 @@
+/// main.cpp
+/// Just runs an infinite loop of
+/// * EventHandler
+/// * update
+/// * render
+/// all while running() returns true
+///
+/// @author: Ian Sanchez Baca
+/// @lastmodified: 04/24/24
 #include <iostream>
 #include <SDL2/SDL.h> // The sdl library
 #include <stdio.h>
@@ -6,13 +15,6 @@
 
 int main(/*int argc, char *args[]*/)
 {
-    // const int FPS = 60;
-    // // will use this to limit fps? lol
-
-    // const int frameDelay = 1000 / FPS;
-    // Uint32 frameStart;
-    // int frameTime;
-
     Game game;
 
     string name = "RPG Creator";
