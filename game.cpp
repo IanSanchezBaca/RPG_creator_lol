@@ -47,22 +47,29 @@ void Game::initialize(string title, int xpos, int ypos, int width, int height)
 void Game::EventHandler()
 {
     SDL_PollEvent(&event);
+    /* check if the user pressed alt-f4 or hit the close button */
     if (event.type == SDL_QUIT)
     {
-        /* Pretty much if alt-f4 or the 'x' is pressed */
         isRunning = false;
         return;
     }
+
+    /* Switch statement for the good stuff??? */
     switch (event.type)
     {
+
     case SDL_MOUSEBUTTONDOWN:
+
         if (event.button.button == SDL_BUTTON_LEFT)
         {
             // Get the mouse coordinates
             x = event.button.x;
             y = event.button.y;
             cout << "mouse was clicked at pos: " << x << " " << y << "\n";
+            round();
+            cout << "rounded up it's: " << x << " " << y << "\n";
         }
+
         break;
 
     default:
@@ -93,3 +100,18 @@ bool Game::running()
 {
     return isRunning;
 } // running
+
+void Game::round()
+{
+    // double dx = x;
+    // double dy = y;
+
+    x = (x / 32);
+    x = x * 32;
+    y = (y / 32);
+    y = y * 32;
+
+    // x = dx;
+    // y = dy;
+
+} // round
