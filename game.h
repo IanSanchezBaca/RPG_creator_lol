@@ -48,6 +48,8 @@ public:
     void round();
 
 private:
+    vector<vector<int>> grapha;
+
     int x, y; // should be the position that the mouse clicked
 
     bool isRunning;

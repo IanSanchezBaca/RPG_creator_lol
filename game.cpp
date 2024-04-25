@@ -7,6 +7,7 @@ Game::Game() {}
 
 void Game::initialize(string title, int xpos, int ypos, int width, int height)
 {
+    /* INITIALIZING SDL */
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
     {
         // string t = title;
@@ -42,6 +43,16 @@ void Game::initialize(string title, int xpos, int ypos, int width, int height)
         exit(-1);
     }
     isRunning = true;
+
+    /* INITIALIZING THE GRAPH */
+    // for (int i = 0; i < 20; i++) // y?
+    // {
+    //     for (int j = 0; j < 25; j++) // x?
+    //     {
+    //         grapha[j].push_back(-1);
+    //     }
+    // }
+
 } // initialize
 
 void Game::EventHandler()
@@ -68,6 +79,11 @@ void Game::EventHandler()
             cout << "mouse was clicked at pos: " << x << " " << y << "\n";
             round();
             cout << "rounded up it's: " << x << " " << y << "\n";
+        }
+
+        if (event.button.button == SDL_BUTTON_RIGHT)
+        {
+            cout << "Right click is currently a WIP\n";
         }
 
         break;
