@@ -103,15 +103,6 @@ bool Game::running()
 
 void Game::round()
 {
-    // double dx = x;
-    // double dy = y;
-
     x = (x / 32);
-    x = x * 32;
     y = (y / 32);
-    y = y * 32;
-
-    // x = dx;
-    // y = dy;
-
 } // round
