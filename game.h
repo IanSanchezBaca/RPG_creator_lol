@@ -65,7 +65,7 @@ private:
 
     bool rightClick = false;
     bool leftClick = false;
-
+    int max = 0;
     SDL_Window *window = NULL;
 };
 

@@ -55,6 +55,7 @@ void Game::initialize(std::string title, int xpos, int ypos, int width, int heig
     std::cout << "Loading sprites inside of " << p << "\n";
     for (const auto &entry : fs::directory_iterator(p))
     {
+        max++;
         std::string tmpName = entry.path();
 
         graph->addName(tmpName);
@@ -113,7 +114,7 @@ void Game::EventHandler()
         else if (event.wheel.y < 0)
         {
             // Scroll down
-            if (type != 3)
+            if (type != max - 1)
             {
                 type++;
                 graph->whatType(type);
