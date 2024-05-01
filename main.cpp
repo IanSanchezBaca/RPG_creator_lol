@@ -22,7 +22,7 @@ int main(/*int argc, char *args[]*/)
 {
     signal(SIGSEGV, segfaultHandler);
 
-    string name = "RPG Creator";
+    std::string name = "RPG Creator";
 
     game.initialize(name,
                     SDL_WINDOWPOS_CENTERED,
@@ -55,7 +55,7 @@ void segfaultHandler(int signal)
 {
     (void)signal;
 
-    cerr << "Woops! I segfaulted. Cleaning up before closing.\n";
+    std::cerr << "Woops! I segfaulted. Cleaning up before closing.\n";
 
     game.close();
 

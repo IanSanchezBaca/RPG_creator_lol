@@ -11,7 +11,7 @@ DEBUGFLAGS = -g
 LDFLAGS = -lSDL2 -lSDL2_image
 
 # Source files
-SRCS = main.cpp game.cpp
+SRCS = main.cpp game.cpp TextureManager.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
