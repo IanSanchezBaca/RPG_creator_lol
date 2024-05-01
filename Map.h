@@ -8,6 +8,7 @@
 #define MAP_H
 #include "game.h"
 #include "TextureManager.h"
+#include <fstream>
 
 class Map
 {
@@ -23,6 +24,8 @@ public:
     void addName(std::string);
 
     void setTextures();
+
+    void saveMap();
 
 private:
     SDL_Rect src, dest;

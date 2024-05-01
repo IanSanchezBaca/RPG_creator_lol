@@ -156,6 +156,10 @@ void Game::close()
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
+
+    std::cout << "Saving Map to map.txt file\n";
+    graph->saveMap();
+
     std::cout << "Game cleaned!\n";
 } // close
 

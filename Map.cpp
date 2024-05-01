@@ -69,3 +69,28 @@ void Map::setTextures()
         rainbow[i] = TextureManager::LoadTexture(name[i]);
     }
 }
+
+void Map::saveMap()
+{
+    std::ofstream file("map.txt"); // Open the file for writing
+    if (!file.is_open())
+    {
+        std::cerr << "Error: Unable to open file for writing: map.txt" << std::endl;
+    }
+    else
+    {
+
+        for (int i = 0; i < (int)grapha.size(); i++)
+        {
+            for (int j = 0; j < (int)grapha[i].size(); j++)
+            {
+                file << grapha[i][j] << " ";
+            }
+            file << "\n";
+        }
+
+        // file << "Default content for the map file."; // Write content to the file
+        std::cout << "Content written to file: map.txt" << std::endl;
+    }
+    file.close(); // Close the file
+}
