@@ -13,12 +13,9 @@
 #include "SDL2/SDL_image.h"
 #include <vector>
 #include <iostream>
-#include <filesystem>
 
-// #include <unistd.h> // for sleep()
-// #include <stdio.h>
-
-// using namespace std; // might break
+/* my compiler is too old for regular filesystem library */
+#include <experimental/filesystem>
 
 class Game
 {
@@ -52,15 +49,17 @@ public:
     void round();
 
 private:
-    vect<vect<int>> grapha; // 25 x 20
+    // vect<vect<int>> grapha; // 25 x 20
 
-    vect<std::string> tile; // keeps track of what each tile is
+    vect<std::string> tileName; // keeps track of what each tile is
 
     /* these are the coordinates of grapha on the graph */
     int x = -1;
     int y = -1;
 
     bool isRunning;
+
+    int type = 1;
 
     int deleteMe = 0;
 

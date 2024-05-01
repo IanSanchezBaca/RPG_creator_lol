@@ -20,6 +20,7 @@ void segfaultHandler(int signal);
 
 int main(/*int argc, char *args[]*/)
 {
+
     signal(SIGSEGV, segfaultHandler);
 
     std::string name = "RPG Creator";

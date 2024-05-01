@@ -1,7 +1,14 @@
 #include "game.h"
+#include "TextureManager.h"
+#include "Map.h"
 
 SDL_Renderer *Game::renderer = NULL;
 SDL_Event Game::event;
+
+Map *graph;
+
+// checking folder
+namespace fs = std::experimental::filesystem;
 
 Game::Game() {}
 
@@ -10,7 +17,6 @@ void Game::initialize(std::string title, int xpos, int ypos, int width, int heig
     /* INITIALIZING SDL */
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
     {
-        // string t = title;
         std::cout << "SDL Initialized correctly.\n";
 
         window = SDL_CreateWindow(title.c_str(), xpos, ypos, width, height, SDL_WINDOW_SHOWN);
@@ -43,30 +49,24 @@ void Game::initialize(std::string title, int xpos, int ypos, int width, int heig
         exit(-1);
     }
     isRunning = true;
+    graph = new Map();
 
-    /* INITIALIZING THE GRAPH
-     * - set all of them to -1 at start */
-    for (int i = 0; i < 20; i++) // y?
-    {
-        vect<int> temp(25, -1);
-        grapha.push_back(temp);
-    }
+    graph->whatType(type);
 
 } // initialize
 
 void Game::EventHandler()
 {
     SDL_PollEvent(&event);
-    /* check if the user pressed alt-f4 or hit the close button */
-    if (event.type == SDL_QUIT)
-    {
-        isRunning = false;
-        return;
-    }
 
     /* Switch statement for the good stuff??? */
     switch (event.type)
     {
+    case SDL_QUIT:
+        /* check if the user pressed alt-f4 or hit the close button */
+        isRunning = false;
+        return;
+        break;
 
     case SDL_MOUSEBUTTONDOWN:
 
@@ -75,22 +75,39 @@ void Game::EventHandler()
             // Get the mouse coordinates
             x = event.button.x;
             y = event.button.y;
-            std::cout << "mouse was clicked at pos: (" << x << ", " << y << ")\n";
             round();
-            std::cout << "rounded up it's: (" << x << ", " << y << ")\n";
-
-            std::cout << "at that coordinate Grapha is: " << grapha[y][x] << "\n";
-
-            rightClick = true;
+            leftClick = true;
         }
-
         if (event.button.button == SDL_BUTTON_RIGHT) // right click
         {
-            std::cout << "Right click is currently a WIP\n";
-
-            // leftClick = true;
+            // std::cout << "Right click is currently a WIP\n";
+            x = event.button.x;
+            y = event.button.y;
+            round();
+            rightClick = true;
         }
+        break;
 
+    case SDL_MOUSEWHEEL:
+        // std::cout << "Sroll wheel moved\n";
+        if (event.wheel.y > 0)
+        {
+            // Scroll up
+            if (type != 1)
+            {
+                type--;
+                graph->whatType(type);
+            }
+        }
+        else if (event.wheel.y < 0)
+        {
+            // Scroll down
+            if (type != 3)
+            {
+                type++;
+                graph->whatType(type);
+            }
+        }
         break;
 
     default:
@@ -100,13 +117,15 @@ void Game::EventHandler()
 
 void Game::update()
 {
-    if (!(x == -1) && !(y == -1))
+    if (leftClick)
     {
-        if (rightClick)
-        {
-            grapha[y][x] = 1;
-            rightClick = false;
-        }
+        leftClick = false;
+        graph->updateMap(x, y, type);
+    }
+    if (rightClick)
+    {
+        rightClick = false;
+        graph->updateMap(x, y, 0);
     }
 }
 
@@ -115,8 +134,7 @@ void Game::render()
 
     SDL_RenderClear(renderer);
 
-    // SDL_SetRenderDrawColor(renderer, 0, 0, deleteMe, 0);
-    // testing something
+    graph->drawMap();
 
     SDL_RenderPresent(renderer);
 }
@@ -127,7 +145,6 @@ void Game::close()
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
     std::cout << "Game cleaned!\n";
-    // std::cout << "Counter: " << test_counter <<std::endl;
 } // close
 
 bool Game::running()

@@ -3,6 +3,11 @@
 
 #include "game.h"
 
+#define DEFAULT "media/background/test.png"
+#define WATER "media/background/water.png"
+#define GRASS "media/background/grass.png"
+#define DIRT "media/background/dirt.png"
+
 class TextureManager
 {
 public:

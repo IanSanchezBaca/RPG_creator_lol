@@ -4,14 +4,14 @@
 CC = g++
 
 # Compiler flags
-CFLAGS = -Wall -Wextra -std=c++11
+CFLAGS = -std=c++17 -Wall -Wextra -std=c++11
 DEBUGFLAGS = -g
 
 # Linker flags for SDL2
 LDFLAGS = -lSDL2 -lSDL2_image
 
 # Source files
-SRCS = main.cpp game.cpp TextureManager.cpp
+SRCS = main.cpp game.cpp TextureManager.cpp Map.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
