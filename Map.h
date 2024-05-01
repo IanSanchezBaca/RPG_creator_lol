@@ -20,12 +20,16 @@ public:
 
     void updateMap(int, int, int);
 
+    void addName(std::string);
+
+    void setTextures();
+
 private:
     SDL_Rect src, dest;
 
     vect<vect<int>> grapha; // 25 x 20
 
-    vect<std::string> name;
+    vect<std::string> name; // holds the names of the textures
 
     /* This holds the textures like
      * dirt

@@ -31,10 +31,6 @@ int main(/*int argc, char *args[]*/)
                     800,  // width
                     640); // height
 
-    // /* testing the segfault lol */
-    // int *ptr = nullptr;
-    // *ptr = 42;
-
     while (game.running())
     {
         /* FIRST TAKE IN INPUT FROM THE USER */
@@ -54,9 +50,12 @@ int main(/*int argc, char *args[]*/)
 
 void segfaultHandler(int signal)
 {
+    /* catching segfault
+     * This way i can close correctly */
+
     (void)signal;
 
-    std::cerr << "Woops! I segfaulted. Cleaning up before closing.\n";
+    std::cerr << "\nWoops! I segfaulted. Cleaning up before closing.\n";
 
     game.close();
 

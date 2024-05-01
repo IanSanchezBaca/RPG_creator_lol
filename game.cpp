@@ -51,6 +51,17 @@ void Game::initialize(std::string title, int xpos, int ypos, int width, int heig
     isRunning = true;
     graph = new Map();
 
+    fs::path p = "media/background";
+    std::cout << "Loading sprites inside of " << p << "\n";
+    for (const auto &entry : fs::directory_iterator(p))
+    {
+        std::string tmpName = entry.path();
+
+        graph->addName(tmpName);
+    }
+    graph->setTextures();
+    // isRunning = false;
+
     graph->whatType(type);
 
 } // initialize
